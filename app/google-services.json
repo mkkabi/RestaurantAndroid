@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "50356320534",
+    "firebase_url": "https://restaurant-74323.firebaseio.com",
+    "project_id": "restaurant-74323",
+    "storage_bucket": "restaurant-74323.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:50356320534:android:0295c185a813c14e3d7837",
+        "android_client_info": {
+          "package_name": "com.mkkabi.restaurant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "50356320534-3i2pko0imreftsv7jsc9j0e5i2ubc00k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxpXy6iaMlPy_8EM-apgrlVze8qZEIhGc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "50356320534-3i2pko0imreftsv7jsc9j0e5i2ubc00k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
