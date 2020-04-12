@@ -12,7 +12,7 @@ public class Director extends Supervisor {
         super(login, pass);
     }
 
-    public List<Zakaz> pokazatVseZakazi(Worker worker, Restaurant restoran) {
+    public List<Zakaz> pokazatVseZakazi(Worker worker, Restaurant restoran) { // для чего в методе первый параметр ?
         return restoran.showAllOrders(this);
     }
 
