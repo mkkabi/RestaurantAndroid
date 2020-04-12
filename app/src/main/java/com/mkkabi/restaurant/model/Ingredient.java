@@ -1,5 +1,8 @@
 package com.mkkabi.restaurant.model;
 
+import com.google.firebase.firestore.DocumentId;
+
+
 public class Ingredient implements Comparable<Ingredient>{
     private String name, id, description, measureUnit;
     // @amount is ingredient's weight or volume per portion

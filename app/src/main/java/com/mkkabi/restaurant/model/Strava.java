@@ -8,7 +8,7 @@ import java.util.function.Function;
 
 public class Strava implements Comparable<Strava>{
     private String name, description, id, restaurantID, imageurl;
-    private double price;
+    private int price;
 //    private Map<Ingredient, Integer> ingredienti = new HashMap<>();
     private Map<Ingredient, Integer> additionalIngredients = new HashMap<>();
     private List<Ingredient> ingredientList = new ArrayList<>();
@@ -65,12 +65,7 @@ public class Strava implements Comparable<Strava>{
         }
     }
 
-    public Strava setPrice(int price) {
-        this.price = price;
-        return this;
-    }
-
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
@@ -90,9 +85,8 @@ public class Strava implements Comparable<Strava>{
         this.description = description;
     }
 
-    public Strava setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 
 
@@ -112,7 +106,7 @@ public class Strava implements Comparable<Strava>{
         this.restaurantID = restaurantID;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

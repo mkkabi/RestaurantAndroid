@@ -77,7 +77,9 @@ public class StravaListAdapter extends RecyclerView.Adapter<StravaListAdapter.Vi
         TextView additionalItemsTextHeader;
         ImageView imageViewDish;
         boolean isExpandedAdditionalItems = false;
+
         private int totalDishPrice;
+        int numberOfDishes;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -117,6 +119,8 @@ public class StravaListAdapter extends RecyclerView.Adapter<StravaListAdapter.Vi
         }
 
         void bind(Strava strava) {
+            numberOfDishes = Integer.parseInt(dishesNumber.getText().toString());
+            totalDishPrice = numberOfDishes * strava.getPrice();
             title.setText(strava.getName());
             dishPrice.setText(strava.getPrice() + "");
             description.setText(strava.getDescription());
@@ -132,7 +136,6 @@ public class StravaListAdapter extends RecyclerView.Adapter<StravaListAdapter.Vi
             decreaseStrava.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int numberOfDishes = Integer.parseInt(dishesNumber.getText().toString());
                     if (numberOfDishes > 1) {
                         numberOfDishes--;
                         dishesNumber.setText(numberOfDishes+"");
@@ -144,21 +147,19 @@ public class StravaListAdapter extends RecyclerView.Adapter<StravaListAdapter.Vi
             increaseStrava.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int numberOfDishes = Integer.parseInt(dishesNumber.getText().toString());
+//                    int numberOfDishes = Integer.parseInt(dishesNumber.getText().toString());
                     numberOfDishes++;
                     dishesNumber.setText(numberOfDishes+"");
                     dishPrice.setText(String.valueOf(strava.getPrice()*numberOfDishes));
                 }
             });
 
-//            addToCartButton.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Bundle bundle = new Bundle();
-//                    bundle.putString("menucategoryid", menuCategory.getId());
-//                    Navigation.findNavController(v).navigate(R.id.nav_strava_list, bundle);
-//                }
-//            });
+            addToCartButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
         }
     }
 

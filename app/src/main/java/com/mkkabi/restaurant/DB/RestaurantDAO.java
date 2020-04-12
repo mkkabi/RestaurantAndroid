@@ -18,25 +18,30 @@ public class RestaurantDAO {
     private static FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     public static List<Restaurant> getAllRestaurants() {
-        List<Restaurant> result = new ArrayList<>();
+        List<Restaurant> restaurants = new ArrayList<>();
 
+
+        db = FirebaseFirestore.getInstance();
         // Read from database
-        db.collection("restoraunts")
+        Task<QuerySnapshot> task = db.collection("restaurants")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Restaurant restaurant = new Restaurant(document.getData().get("name").toString(), document.getData().get("id").toString());
-                                restaurant.setshortDescription(document.getData().get("description").toString());
-                                result.add(restaurant);
+
+                                Restaurant restaurant = new Restaurant(document.getData().get("name").toString(), document.getId());
+                                restaurant.setshortDescription(document.getData().get("short_description").toString());
+                                restaurant.setImageUrl(document.getData().get("image_url").toString());
+                                restaurants.add(restaurant);
                             }
                         } else {
                             Log.w("myTag", "Error getting documents.", task.getException());
                         }
                     }
                 });
-        return result;
+
+        return restaurants;
     }
 }
