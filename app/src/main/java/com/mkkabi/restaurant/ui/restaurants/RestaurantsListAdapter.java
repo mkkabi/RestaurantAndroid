@@ -17,11 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.mkkabi.restaurant.R;
 import com.mkkabi.restaurant.model.Restaurant;
-import com.mkkabi.restaurant.utils.GlideApp;
-import com.mkkabi.restaurant.utils.GlideApp2;
 import com.google.firebase.storage.FirebaseStorage;
+//import com.mkkabi.restaurant.utils.GlideApp;
 
 import java.util.List;
+
+import static com.mkkabi.restaurant.utils.Constants.RESTAURANT_ID;
 
 class RestaurantsListAdapter extends RecyclerView.Adapter<RestaurantsListAdapter.ViewHolder> {
     private List<Restaurant> restaurants;
@@ -74,33 +75,21 @@ class RestaurantsListAdapter extends RecyclerView.Adapter<RestaurantsListAdapter
 
         void bind(Restaurant restaurant){
             title.setText(restaurant.getName());
-            description.setText(restaurant.getshortDescription());
-            idTextView.setText(restaurant.getId());
-            GlideApp.with(itemView).load(restaurant.getImageUrl()).into(restaurantImage);
+            description.setText(restaurant.getShortDescription());
+            idTextView.setText(restaurant.getDocumentId());
+//            GlideApp.with(itemView).load(restaurant.getImageUrl()).into(restaurantImage);
+            Glide.with(itemView).load(restaurant.getImageUrl()).into(restaurantImage);
+            openMenuButton.setOnClickListener(v -> {
 
-            openMenuButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+                // Todo need to learn about passing data to new destination on https://developer.android.com/guide/navigation/navigation-pass-data
+                // need to pass Restaurant ID to new destionation to load the menu in new Fragment
 
-                    // Todo need to learn about passing data to new destination on https://developer.android.com/guide/navigation/navigation-pass-data
-                    // need to pass Restaurant ID to new destionation to load the menu in new Fragment
-
-                    Bundle bundle = new Bundle();
-                    bundle.putString("restaurantId", restaurant.getId());
-                    Navigation.findNavController(v).navigate(R.id.nav_restaurant_menu, bundle);
-                }
+                Bundle bundle = new Bundle();
+                bundle.putString(RESTAURANT_ID, restaurant.getDocumentId());
+                Navigation.findNavController(v).navigate(R.id.nav_restaurant_menu, bundle);
             });
         }
 
-        // old ways of navigating to a new Fragment
-        private void showMenu(Restaurant restaurant) {
-//            RestaurantMenuFragment menuFragment = RestaurantMenuFragment.newInstance(restaurant.getId());
-//            fragmentManager.beginTransaction().
-//                    replace(R.id.nav_host_fragment, menuFragment, "menuFragment").
-//                    addToBackStack(null).
-//                    commit();
-        }
     }
-
 
 }

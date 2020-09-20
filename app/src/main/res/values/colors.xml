@@ -6,6 +6,7 @@
 
     <color name="dish_price_color">#673AB7</color>
     <color name="welcome_signin_signup">#FFFFFF</color>
+    <color name="link_color">#01988A</color>
 
 
 </resources>

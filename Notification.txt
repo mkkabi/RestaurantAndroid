@@ -1,0 +1,10 @@
+{
+  "data": {
+    "title": "Hey",
+    "content": "Check Out This Awesome Game!",
+    "imageUrl": "http://h5.4j.com/thumb/Ninja-Run.jpg",
+    "gameUrl": "https://h5.4j.com/Ninja-Run/index.php?pubid=noad",
+    "sound" : "mySound"
+  },
+  "to": "cClqwcb6cng:APA91bGBzDqu0P9IbhiDhOw4mFBNbWx0zcxTLJC2ZndCkaG5Y5IqEV3s8LjkObVGLgboLnBhWBNWtQ5lwUkRF585HRqs-oQqiKQpnWczdYrbfwO4eWiI6fJCw6HSSGu1NzB427XBcnW8"
+}

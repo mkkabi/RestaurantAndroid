@@ -1,59 +1,18 @@
 package com.mkkabi.restaurant.model;
 
+import androidx.annotation.NonNull;
+
 import com.google.firebase.firestore.DocumentId;
 
 
 public class Ingredient implements Comparable<Ingredient>{
-    private String name, id, description, measureUnit;
+    @DocumentId
+    private String id;
+    private String name, description, measureUnit;
     // @amount is ingredient's weight or volume per portion
     private int price, calories, amount;
 
-    public static class Builder{
-        private String name, id, description, measureUnit;
-        private int price, calories, amount;
-
-        public Builder() {
-        }
-
-        public Ingredient build() {
-            return new Ingredient(this);
-        }
-
-        public Builder measureUnit(String measureUnit) {
-            this.measureUnit = measureUnit;
-            return this;
-        }
-
-        public Builder name(String name) {
-            this.name = name;
-            return this;
-        }
-
-        public Builder price(int price){
-            this.price = price;
-            return this;
-        }
-
-        public Builder amount(int amount){
-            this.amount = amount;
-            return this;
-        }
-
-        public Builder calories(int calories){
-            this.calories = calories;
-            return this;
-        }
-
-        public Builder description(String description){
-            this.description = description;
-            return this;
-        }
-    }
-
-    private Ingredient(Builder builder){
-        this.name = builder.name;
-        this.price = builder.price;
-    }
+    public Ingredient(){}
 
     public String getDescription() {
         return description;
@@ -113,7 +72,7 @@ public class Ingredient implements Comparable<Ingredient>{
 
     // todo может проверяться с ингредиетом, у которого имя null, нужно ли в методе compareTo делать проверку на Null параметра name?
     @Override
-    public int compareTo(Ingredient ingredient) {
+    public int compareTo(@NonNull Ingredient ingredient) {
         return this.name.compareTo(((Ingredient)ingredient).getName());
     }
 
@@ -135,6 +94,7 @@ public class Ingredient implements Comparable<Ingredient>{
         return result;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Ingredient{" +

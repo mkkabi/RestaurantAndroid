@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragmentCartLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:theme="@style/AppTheme.NoActionBar"
+    tools:context="com.mkkabi.restaurant.ui.restaurants.CartFragment">
+
+<!--    <com.google.android.material.appbar.AppBarLayout android:layout_height="180dp"-->
+<!--        android:layout_width="match_parent">-->
+
+<!--        <com.google.android.material.appbar.CollapsingToolbarLayout-->
+<!--            app:layout_scrollFlags="scroll|exitUntilCollapsed"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_width="match_parent">-->
+
+<!--            <ImageView-->
+<!--                app:layout_collapseMode="parallax"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_width="match_parent" />-->
+
+<!--            <android.support.v7.widget.Toolbar />-->
+
+<!--        </com.google.android.material.appbar.CollapsingToolbarLayout>-->
+
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
+
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--        android:id="@+id/app_bar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/app_bar_height"-->
+<!--        android:addStatesFromChildren="true"-->
+<!--        android:fitsSystemWindows="true"-->
+<!--        android:theme="@style/AppTheme.NoActionBar"-->
+<!--        app:layout_collapseMode="pin"-->
+<!--        app:expanded="true">-->
+
+
+<!--        <com.google.android.material.appbar.CollapsingToolbarLayout-->
+<!--            android:id="@+id/toolbar_layout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:alpha="1"-->
+<!--            android:background="#830F0F"-->
+<!--            android:fitsSystemWindows="true"-->
+<!--            app:contentScrim="?attr/colorPrimary"-->
+<!--            app:layout_collapseMode="pin"-->
+<!--            app:layout_scrollFlags="scroll|exitUntilCollapsed"-->
+<!--            app:toolbarId="@+id/toolbarCart">-->
+
+<!--            <androidx.appcompat.widget.Toolbar-->
+<!--                android:id="@+id/toolbarCart"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="?attr/actionBarSize"-->
+<!--                android:background="#673AB7"-->
+<!--                android:theme="@style/AppTheme.NoActionBar"-->
+<!--                app:layout_collapseMode="pin"-->
+<!--                app:navigationIcon="@drawable/ic_account_box_black_24dp" />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/headerImage"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:background="#673AB7"-->
+<!--                android:scaleType="centerCrop"-->
+<!--                app:layout_collapseMode="parallax" />-->
+
+<!--        </com.google.android.material.appbar.CollapsingToolbarLayout>-->
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
+
+
+    <include
+        android:id="@+id/dishesListIncludedLayout"
+        layout="@layout/fragment_dishes_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/emptyCartConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#A8A7AA"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/cartImageView"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/ic_shopping_cart_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/emptyCartTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/your_cart_is_empty"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cartImageView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

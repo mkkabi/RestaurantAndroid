@@ -17,7 +17,10 @@ import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
+import com.mkkabi.restaurant.DB.GetItemsCollectionListener;
+import com.mkkabi.restaurant.DB.RestaurantsFirestoreManager;
 import com.mkkabi.restaurant.R;
+import com.mkkabi.restaurant.model.MenuCategory;
 import com.mkkabi.restaurant.model.Restaurant;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,16 +29,16 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.mkkabi.restaurant.utils.MyFunction;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class RestaurantsListFragment extends Fragment {
     private Context context;
-    private RestaurantsListAdapter adapter;
     private RecyclerView restaurantsRecyclerView;
-    FirebaseFirestore db;
-    List<Restaurant> restaurants;
 
     public static RestaurantsListFragment newInstance() {
         return new RestaurantsListFragment();
@@ -59,38 +62,28 @@ public class RestaurantsListFragment extends Fragment {
         context = getActivity();
         initViews(view);
 
+        RestaurantsFirestoreManager.newInstance().getAllRestaurants(new GetItemsCollectionListener<Restaurant>(Restaurant.class) {
+            @Override
+            public void performAction() {
+                populateRestaurantRecyclerView(this.getItemsList());
+            }
+        });
+    }
+
+    private void populateRestaurantRecyclerView(List<Restaurant> restaurantList) {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context);
         restaurantsRecyclerView.setLayoutManager(mLayoutManager);
-        restaurants = new ArrayList<>();
-
-        db = FirebaseFirestore.getInstance();
-        // Read from database
-        db.collection("restaurants")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-
-                                Restaurant restaurant = new Restaurant(document.getData().get("name").toString(), document.getId());
-                                restaurant.setshortDescription(document.getData().get("short_description").toString());
-                                restaurant.setImageUrl(document.getData().get("image_url").toString());
-                                restaurants.add(restaurant);
-                            }
-
-                            adapter = new RestaurantsListAdapter(restaurants);
-                            restaurantsRecyclerView.setAdapter(adapter);
-                            restaurantsRecyclerView.refreshDrawableState();
-                        } else {
-                            Log.w("myTag", "Error getting documents.", task.getException());
-                        }
-                    }
-                });
+        // Set the restaurantListMainRecyclerViewAdapter in the restaurantListRecyclerView
+        RestaurantsListAdapter adapter = new RestaurantsListAdapter(restaurantList);
+        restaurantsRecyclerView.setAdapter(adapter);
+        restaurantsRecyclerView.refreshDrawableState();
     }
 
     private void initViews(View root) {
         restaurantsRecyclerView = root.findViewById(R.id.restaurantsRecyclerView);
     }
 
+
 }
+
+

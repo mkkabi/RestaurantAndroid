@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login2"
-    tools:context=".ui.account.AccountLoginFragment">
+    tools:context=".ui.account.UserAccountFragment">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/loginLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -41,5 +41,17 @@
             android:src="@drawable/googleg_standard_color_18" />
 
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBarMedium"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/colorPrimary"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

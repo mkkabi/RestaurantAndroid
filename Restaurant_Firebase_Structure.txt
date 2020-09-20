@@ -1,0 +1,63 @@
+dishes{
+	documents{
+		additional_ingredients{
+			int amount
+			int calories
+			String description
+			String measureUnit
+			String name
+			int price
+		}
+		
+		int calories
+		String description
+		String imageUrl
+		String[] menuCategories; // contains menu Categories IDs
+		String name
+		int price
+		String restaurantId
+		String[] tags
+		
+		
+	}
+}
+
+restaurants{
+	documents{
+		menu_categories{
+			documents{
+				String descriptionShort
+				String imageUrl
+				String name
+			}
+		}
+		
+		String imageUrl
+		String name
+		DateStamp registrationDate
+		String shortDescription
+	}
+}
+
+orders{
+	documents{
+		String clientId
+		Date date
+		String [] dishesIDs
+		int orderAmount
+		String orderId
+	}
+}
+
+users{
+	documents{
+		String email
+		String firebaseID
+		String name
+		String [] orders
+		String phoneNumber
+		String photoUrl
+		String restaurantId
+		Map<String, Boolean> roles;
+	}
+}

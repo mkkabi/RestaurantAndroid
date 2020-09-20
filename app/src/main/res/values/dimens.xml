@@ -14,7 +14,11 @@
     <dimen name="dish_price_size">18sp</dimen>
     <dimen name="link_text_margin_top">25dp</dimen>
     <dimen name="dish_price_left_margin">15dp</dimen>
+    <dimen name="account_fields_left_margin">15dp</dimen>
+    <dimen name="account_fields_top_margin">15dp</dimen>
     <dimen name="welcome_signin_signup_paddings">18dp</dimen>
     <dimen name="welcome_signin_signup_text">20sp</dimen>
+    <dimen name="general_fragment_screen_padding">20sp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
 
 </resources>

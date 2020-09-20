@@ -12,18 +12,6 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.mkkabi.restaurant.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.mkkabi.restaurant.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-
-    <fragment
         android:id="@+id/nav_restaurants"
         android:name="com.mkkabi.restaurant.ui.restaurants.RestaurantsListFragment"
         android:label="@string/restaurants_list"
@@ -58,19 +46,32 @@
         android:label="@string/list_of_menu_items"
         tools:layout="@layout/fragment_dishes_list" />
 
-    <fragment
-        android:id="@+id/nav_account_login"
-        android:name="com.mkkabi.restaurant.ui.account.AccountLoginFragment"
-        android:label="@string/user_account"
-        tools:layout="@layout/fragment_account_login" />
+<!--    <fragment-->
+<!--        android:id="@+id/nav_account_login"-->
+<!--        android:name="com.mkkabi.restaurant.ui.account.AccountLoginFragment"-->
+<!--        android:label="@string/user_account"-->
+<!--        tools:layout="@layout/fragment_account_login" >-->
+<!--    </fragment>-->
 
     <fragment
         android:id="@+id/nav_user_account"
         android:name="com.mkkabi.restaurant.ui.account.UserAccountFragment"
         android:label="@string/user_account"
         tools:layout="@layout/fragment_user_account" >
-        <action
-            android:id="@+id/action_nav_user_account_to_nav_home"
-            app:destination="@id/nav_home" />
     </fragment>
+
+    <fragment
+        android:id="@+id/nav_account_login_firebase"
+        android:name="com.mkkabi.restaurant.ui.account.FirebaseLoginActivity"
+        android:label="@string/firebase_login"
+        tools:layout="@layout/fragment_account_login" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_cart"
+        android:name="com.mkkabi.restaurant.ui.restaurants.CartFragment"
+        android:label="@string/shopping_cart"
+        tools:layout="@layout/fragment_dishes_list" >
+    </fragment>
+
 </navigation>

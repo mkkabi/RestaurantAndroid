@@ -17,6 +17,13 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="AppCompat" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+
     <style name="PrimaryFlatButton" parent="Theme.AppCompat.Light">
         <item name="android:buttonStyle">
             @style/Widget.AppCompat.Button.Borderless.Colored
@@ -24,4 +31,46 @@
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
+
+<!--    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
+<!--        &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+<!--        <item name="colorPrimary">@color/colorPrimary</item>-->
+<!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+<!--        <item name="colorAccent">@color/colorAccent</item>-->
+
+<!--        <item name="windowActionBar">false</item>-->
+<!--        <item name="windowNoTitle">true</item>-->
+<!--        <item name="windowActionModeOverlay">true</item>-->
+<!--        &lt;!&ndash;        <item name="android:alertDialogTheme">@style/AppThemeDialog</item>&ndash;&gt;-->
+<!--    </style>-->
+
+<!--    <style name="AppThemeDialog" parent="Theme.AppCompat.Light.Dialog.Alert">-->
+<!--        <item name="colorAccent">@color/colorAccent</item>-->
+<!--        <item name="android:windowBackground">@color/colorAccent</item>-->
+<!--    </style>-->
+
+<!--    &lt;!&ndash;    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">&ndash;&gt;-->
+<!--    &lt;!&ndash;        <item name="windowActionBar">false</item>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <item name="windowNoTitle">true</item>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <item name="windowActionModeOverlay">true</item>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </style>&ndash;&gt;-->
+
+<!--    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />-->
+
+<!--    &lt;!&ndash;    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar" />&ndash;&gt;-->
+
+<!--    &lt;!&ndash;    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"></style>&ndash;&gt;-->
+
+<!--    <style name="AppTheme.SpinnerOverlay" parent="ThemeOverlay.AppCompat.Light">-->
+<!--        <item name="android:padding">10dp</item>-->
+<!--    </style>-->
+
+<!--    <style name="AppTheme.NoActionBar">-->
+<!--        <item name="windowActionBar">false</item>-->
+<!--        <item name="windowNoTitle">true</item>-->
+<!--    </style>-->
+
+<!--    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />-->
+
+<!--    -->
 </resources>

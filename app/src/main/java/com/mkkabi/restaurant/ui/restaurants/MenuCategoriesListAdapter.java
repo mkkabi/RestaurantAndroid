@@ -12,11 +12,14 @@ import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.mkkabi.restaurant.R;
 import com.mkkabi.restaurant.model.MenuCategory;
-import com.mkkabi.restaurant.utils.GlideApp;
+
 
 import java.util.List;
+
+import static com.mkkabi.restaurant.utils.Constants.MENUCATEGORY_ID;
 
 class MenuCategoriesListAdapter extends RecyclerView.Adapter<MenuCategoriesListAdapter.ViewHolder> {
     private List<MenuCategory> menuCategoriesList;
@@ -32,8 +35,7 @@ class MenuCategoriesListAdapter extends RecyclerView.Adapter<MenuCategoriesListA
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_menucategory, parent, false);
 
-        ViewHolder vh = new ViewHolder(v);
-        return vh;
+        return new ViewHolder(v);
     }
 
     @Override
@@ -43,7 +45,10 @@ class MenuCategoriesListAdapter extends RecyclerView.Adapter<MenuCategoriesListA
 
     @Override
     public int getItemCount() {
-        return menuCategoriesList.size();
+        if(menuCategoriesList!=null && menuCategoriesList.size() > 0) {
+            return menuCategoriesList.size();
+        }
+        return 0;
     }
 
     public void setData(List<MenuCategory> newData) {
@@ -51,13 +56,13 @@ class MenuCategoriesListAdapter extends RecyclerView.Adapter<MenuCategoriesListA
         notifyDataSetChanged();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView title, description, idTextView;
         Button openMenuCategoryButton;
         ImageView imageViewMenuCategoryItem;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             this.title = itemView.findViewById(R.id.textView_menucategoryitem_title);
             this.description = itemView.findViewById(R.id.textView_menucategoryitem_description);
@@ -70,19 +75,18 @@ class MenuCategoriesListAdapter extends RecyclerView.Adapter<MenuCategoriesListA
         void bind(MenuCategory menuCategory){
             title.setText(menuCategory.getName());
             description.setText(menuCategory.getDescriptionShort());
-            idTextView.setText(menuCategory.getId());
-            GlideApp.with(itemView).load(menuCategory.getImageurl()).into(imageViewMenuCategoryItem);
+            idTextView.setText(menuCategory.getDocumentId());
+            Glide.with(itemView).load(menuCategory.getImageUrl()).into(imageViewMenuCategoryItem);
+
+//            GlideApp.with(itemView).load(menuCategory.getImageUrl()).into(imageViewMenuCategoryItem);
 
             openMenuCategoryButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
                     // Todo need to learn about passing data to new destination on https://developer.android.com/guide/navigation/navigation-pass-data
-                    // need to pass Restaurant ID to new destionation to load the menu in new Fragment
-
                     Bundle bundle = new Bundle();
-                    bundle.putString("menucategoryid", menuCategory.getId());
-                    bundle.putString("restaurantid", menuCategory.getRestaurantId());
+                    bundle.putString(MENUCATEGORY_ID, menuCategory.getDocumentId());
                     Navigation.findNavController(v).navigate(R.id.nav_strava_list, bundle);
                 }
             });

@@ -1,34 +1,20 @@
 package com.mkkabi.restaurant.model;
 
+import com.google.firebase.firestore.DocumentId;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MenuCategory {
-    private String id, restaurantId, descriptionShort, name, imageurl;
-    List<Strava> stravaList = new ArrayList<>();
+    @DocumentId
+    private String documentId;
+    private String descriptionShort, name, imageUrl;
+    private List<Dish> dishList = new ArrayList<>();
 
-    public MenuCategory(String id, String restaurantId, String descriptionShort, String name, String imageurl) {
-        this.id = id;
-        this.restaurantId = restaurantId;
-        this.descriptionShort = descriptionShort;
-        this.name = name;
-        this.imageurl = imageurl;
-    }
+    public MenuCategory() {}
 
-    public void addStravaToMenuCategory(Strava strava){
-        this.stravaList.add(strava);
-    }
-
-    public List<Strava> getStravaList() {
-        return stravaList;
-    }
-
-    public void setStravaList(List<Strava> stravaList) {
-        this.stravaList = stravaList;
-    }
-
-    public String getId() {
-        return id;
+    public String getDocumentId() {
+        return documentId;
     }
 
     public String getDescriptionShort() {
@@ -39,11 +25,24 @@ public class MenuCategory {
         return name;
     }
 
-    public String getImageurl() {
-        return imageurl;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public String getRestaurantId() {
-        return restaurantId;
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
     }
+
+    public void setDescriptionShort(String descriptionShort) {
+        this.descriptionShort = descriptionShort;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
 }

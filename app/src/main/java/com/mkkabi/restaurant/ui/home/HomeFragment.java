@@ -16,38 +16,38 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.crashlytics.android.Crashlytics;
 import com.mkkabi.restaurant.R;
+import com.mkkabi.restaurant.services.MyFirebaseMessagingService;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
-    private Button crashButton;
+	private int notificationId = 1;
+    MyFirebaseMessagingService msg = new MyFirebaseMessagingService();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
+
+
+        homeViewModel.getText().observe(getViewLifecycleOwner(), s -> {
         });
 
-        crashButton = root.findViewById(R.id.crashButton);
-        crashButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Crashlytics.getInstance().crash(); // Force a crash
-            }
-        });
 
-//        Crashlytics.log(Log.DEBUG, "testLogMessage", "a test Log message with debug level");
 
+        initViews(root);
 
 
         return root;
+    }
+
+
+    public void initViews(View view){
+
     }
 
 

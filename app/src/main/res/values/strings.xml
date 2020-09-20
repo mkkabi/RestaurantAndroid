@@ -30,8 +30,17 @@
     <string name="menucategoryitem_sample_description">Menu category sample description</string>
     <string name="open">Open</string>
     <string name="user_account">Account</string>
+    <string name="firebase_login">Log in with Google</string>
+    <string name="shopping_cart">Shopping Cart</string>
     <string name="welcome_signin_signup">Welcome, please sign in or sign up with Google</string>
     <string name="logout">Log out</string>
+    <string name="additional_items_list">Additional Items list</string>
+    <string name="signed_out">Signed out successfully</string>
+    <string name="error_signing_in">Error signing in</string>
+    <string name="default_notification_channel_id">fcm_default_channel</string>
+    <string name="test_message">Test messagea aaaaaaaaaaaa</string>
+    <string name="remove_from_cart">Remove</string>
+    <string name="your_cart_is_empty">Your Cart is empty</string>
 
 
 </resources>
